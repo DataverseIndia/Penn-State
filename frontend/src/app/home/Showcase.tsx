@@ -4,7 +4,7 @@ import { FC } from 'react'
 const Showcase: FC = () => {
   return (
     <section className='w-[80%] mx-auto py-20'>
-      <h1 className='text-center font-roboto-serif text-5xl font-semibold tracking-tight'>Recent Showcase</h1>
+      <h1 className='text-center text-5xl font-relative-medium tracking-tight'>Recent Showcase</h1>
       <div className='grid grid-cols-2 gap-10 mt-20'>
          <div className='flex flex-col gap-7'>
             <div className='flex flex-col gap-2'>

@@ -1,14 +1,6 @@
+import { Button } from '@nextui-org/button';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
 
 const DesktopNavbar: FC = () => {
     return (
@@ -36,29 +28,10 @@ const DesktopNavbar: FC = () => {
                 >
                     News
                 </Link>
-                <Link
-                    to="/contact-us"
-                    className="hover:bg-white/10 animation px-5 py-2 rounded-full text-nowrap"
-                >
-                    Contact Us
-                </Link>
             </div>
-            <Dialog>
-                <DialogTrigger>
-                    <div className='flex justify-end items-center'>
-                        <Input type="text" placeholder="Search" className='bg-stone-800 border-none w-[15vw] ml-auto my-auto'/>
-                        <Search className='-ml-7 size-5 text-stone-50 '/>
-                    </div>
-                </DialogTrigger>
-                <DialogContent>
-                    <DialogHeader className='grid gap-10'>
-                        <h1 className='text-center'>What do you want to search?</h1>
-                        <DialogDescription>
-                            <Input type="text" placeholder="Search" className=' w-[15vw] m-auto'/>
-                        </DialogDescription>
-                    </DialogHeader>
-                </DialogContent>
-            </Dialog>
+            <Button className='max-w-max ml-auto rounded-md bg-neutral-100'>
+                Contact Us
+            </Button>
         </section>
     );
 };

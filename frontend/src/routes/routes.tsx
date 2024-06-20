@@ -18,6 +18,7 @@ const AppRoutes: FC = () => {
       <Route path="/publications" element={<Publications />} />
       <Route path="/news" element={<News />} />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path='/admin/register' element={<Register />} />
    </Routes>
   )
 }

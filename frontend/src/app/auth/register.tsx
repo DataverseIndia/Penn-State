@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@nextui-org/button"
 import { FormInput } from "./register/components/form-input"
 
-export default function Register() {
+const Register = () => {
   return (
     <div className="mx-auto max-w-md space-y-6 py-12 min-h-screen">
       <div className="space-y-2 text-center">
@@ -38,3 +38,5 @@ export default function Register() {
     </div>
   )
 }
+
+export default Register

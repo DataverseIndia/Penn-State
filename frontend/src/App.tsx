@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import AppRoutes from './routes/AppRoutes'
+import AppRoutes from './routes/routes'
 import { Toaster } from 'react-hot-toast'
 
 const App: FC = () => {

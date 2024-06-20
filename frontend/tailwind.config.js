@@ -19,8 +19,9 @@ export const theme = {
   },
   extend: {
     fontFamily: {
-      "roboto-sans": ["Roboto", "sans-serif"],
-      "roboto-serif": ["Roboto Serif", "serif"]
+      "relative-book": ["Relative Book", "sans-serif"],
+      "relative-medium": ["Relative Medium", "sans-serif"],
+      "relative-bold": ["Relative Bold", "sans-serif"]
     },
     keyframes: {
       "accordion-down": {
