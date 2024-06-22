@@ -17,7 +17,7 @@ export const sendMail = async (
     });
 
     const mailOptions = {
-      from: "Shredd Lab",
+      from: "Dr. Das Research lab",
       to: email,
       subject: mailSubject,
       html: content,

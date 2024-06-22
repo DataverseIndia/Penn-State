@@ -21,7 +21,8 @@ export const theme = {
     fontFamily: {
       "relative-book": ["Relative Book", "sans-serif"],
       "relative-medium": ["Relative Medium", "sans-serif"],
-      "relative-bold": ["Relative Bold", "sans-serif"]
+      "relative-bold": ["Relative Bold", "sans-serif"],
+      "roboto-serif": ["Roboto Serif", "serif"]
     },
     keyframes: {
       "accordion-down": {

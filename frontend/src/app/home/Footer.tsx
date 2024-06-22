@@ -1,46 +1,34 @@
 import { Input } from '@/components/ui/input';
 import { Button } from '@nextui-org/button';
+import { Image } from '@nextui-org/image';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <section className="bg-black text-neutral-300 py-10">
+    <section className="bg-black text-neutral-300 py-10 mt-auto">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">
-            <h2 className="text-xl font-bold">Penn State University</h2>
-            <p className="text-lg">Dr.Das Research Lab</p>
+            <Image src='/logo.png' radius='none' alt='' className='h-16'/>
           </div>
           <div className="flex flex-col md:flex-row md:space-x-16">
             <div className="mb-8 md:mb-0">
-              <h3 className="font-bold">Pages</h3>
-              <ul>
-                <li>Home</li>
-                <li>Home 2</li>
-                <li>About</li>
-                <li>Conatct Us</li>
-                <li>Portfolio</li>
-                <li>Portfolio Single</li>
-              </ul>
-            </div>
-            <div className="mb-8 md:mb-0">
               <h3 className="font-bold">Utility Pages</h3>
-              <ul>
-                <li>Style Guide</li>
-                <li>Instruction</li>
-                <li>License</li>
-                <li>Changelog</li>
-                <li>Error 404</li>
-                <li>Password Protected</li>
+              <ul className='text-sm grid'>
+                <Link to="/">About Us</Link>
+                <Link to="/">License</Link>
+                <Link to="/">Contact</Link>
+                <Link to="/">404</Link>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold">Subscribe</h3>
-              <form className="flex">
+              <h3 className="font-relative-bold mb-2">Subscribe</h3>
+              <div className="flex">
                 <Input
                   type="email"
                   placeholder="Enter your email here"
-                  className="p-2 rounded-l-lg bg-neutral-800 text-neutral-50 border-none placeholder:text-neutral-500"
+                  className="p-2 rounded-l-lg bg-neutral-900 text-neutral-50 border-none placeholder:text-neutral-500 focus:border-2 focus:border-neutral-800"
                 />
                 <Button
                   type="submit"
@@ -48,33 +36,22 @@ const Footer: React.FC = () => {
                 >
                   Subscribe
                 </Button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-3 justify-between mt-8 text-gray-400">
           <div>
-            <p className='font-medium'>Copyright by</p>
-            <p>Designed by Iconstica.com</p>
+            <p className='my-auto font-relative-medium text-neutral-100'>Copyright by</p>
+            <p>Dr. Das Research Lab</p>
           </div>
           <div className="mx-auto">
-            <p className='my-auto font-medium'>Contact Us</p>
+            <p className='my-auto font-relative-medium text-neutral-100'>Contact Us</p>
             <p className='my-auto'>+0174569423759</p>
           </div>
           <div className="mt-4 md:mt-0">
-            <p className='font-medium text-right'>Address</p>
+            <p className='my-auto font-relative-medium text-neutral-100 text-right'>Address</p>
             <p className='text-right'>119 Tanglewood Lane Gulfport, MS 39503</p>
-          </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="text-white">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="text-white">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="text-white">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
           </div>
         </div>
       </div>

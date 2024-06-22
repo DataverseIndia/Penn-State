@@ -11,7 +11,7 @@ const Hero: FC = () => {
         className="w-screen max-h-[100vh] object-cover"
       />
       <div className="absolute inset-0 flex flex-col gap-5 items-center justify-center z-20 w-[30%] mx-[10vw]">
-        <h1 className="text-5xl font-relative-medium font-semibold text-white text-shadow-md">
+        <h1 className="text-5xl font-relative-bold text-white text-shadow-md">
           Shaping the Future Through Education and Innovation
         </h1>
         <h1 className="text-neutral-200 text-lg tracking-normal">

@@ -3,30 +3,30 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/api";
 import { showToast } from "@/helpers/showToasts";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
-type ResponseType = InferResponseType<typeof client.admins.register.$post>;
+type ResponseType = InferResponseType<typeof client.admins["verify-registration"]["$post"]>;
 type RequestType = {
-  name: string;
   email: string;
-  password: string;
+  oneTimePass: string;
 };
 
-export const useCreateAccount = () => {
-  const navigate = useNavigate();
+export const useVerifyRegistration = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
-      const response = await client.admins.register.$post({ json });
+      const response = await client.admins["verify-registration"].$post({ json });
       return await response.json();
     },
     onSuccess: (data) => {
-      showToast(data.message, true);
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
-      if(data.success === true) {
-        Cookies.set('dr_das_research_lab_registration_cookie', data.token!);
-        navigate('/admin/verify-registration');
+      if (data.success === true) {
+         showToast(data.message, true);
+         navigate('/admin/dashboard')
+      }
+      else {
+         showToast(data.message, false);
       }
     },
     onError: () => {

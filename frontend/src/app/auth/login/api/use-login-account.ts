@@ -5,32 +5,31 @@ import { showToast } from "@/helpers/showToasts";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-type ResponseType = InferResponseType<typeof client.admins.register.$post>;
+type ResponseType = InferResponseType<typeof client.admins.login.$post>;
 type RequestType = {
-  name: string;
   email: string;
   password: string;
 };
 
-export const useCreateAccount = () => {
-  const navigate = useNavigate();
+export const useLoginAccount = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
-      const response = await client.admins.register.$post({ json });
+      const response = await client.admins.login.$post({ json });
       return await response.json();
     },
     onSuccess: (data) => {
       showToast(data.message, true);
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
       if(data.success === true) {
-        Cookies.set('dr_das_research_lab_registration_cookie', data.token!);
-        navigate('/admin/verify-registration');
+        Cookies.set('dr_das_research_lab_login_cookie', data.token!);
+        navigate('/admin/dashboard')
       }
     },
     onError: () => {
-      showToast("Failed to create account", false);
+      showToast("Failed to login", false);
     },
   });
 

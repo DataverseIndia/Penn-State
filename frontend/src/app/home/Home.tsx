@@ -11,14 +11,12 @@ import Footer from './Footer'
 const Home: FC = () => {
   return (
     <div className=''>
-      <Navbar />
       <Hero />
       <Offerings />
       <Mission />
       <Showcase />
       {/* <Publications /> */}
       {/* <Blog /> */}
-      <Footer />
     </div>
   )
 }

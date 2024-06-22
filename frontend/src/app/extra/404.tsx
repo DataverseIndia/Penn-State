@@ -7,12 +7,6 @@ const NotFound: FC = () => {
   useDocumentTitle(`404 | investor Pysche Evaluation`)
   return (
     <section className='flex flex-col justify-between'>
-      <div className="h-full overflow-hidden absolute flex-none w-full z-0">
-        <img className="block w-full h-full" src="/assets/background.webp" alt="" />
-      </div>
-      <div className="h-full overflow-hidden absolute flex-none w-full z-0">
-          <img className="block w-full h-full" src="/assets/box-pattern.svg" alt="" />
-      </div>
       <div className='flex flex-col justify-center items-center phone:my-[15vh] lg:my-[10vw] z-20'>
          <h1 className='font-bold text-5xl'>
           <span className="bg-gradient-to-r from-indigo-400/95 to-yellow-300/60 bg-clip-text text-transparent">
