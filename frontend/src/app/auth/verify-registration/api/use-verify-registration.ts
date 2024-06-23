@@ -1,7 +1,7 @@
 import { InferResponseType } from "hono";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/api";
-import { showToast } from "@/helpers/showToasts";
+import { showToast } from "@/helpers/show-toasts";
 import { useNavigate } from "react-router-dom";
 
 type ResponseType = InferResponseType<typeof client.admins["verify-registration"]["$post"]>;
@@ -23,7 +23,7 @@ export const useVerifyRegistration = () => {
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
       if (data.success === true) {
          showToast(data.message, true);
-         navigate('/admin/dashboard')
+         navigate('/admin/home')
       }
       else {
          showToast(data.message, false);

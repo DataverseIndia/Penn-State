@@ -1,7 +1,7 @@
 import { InferResponseType } from "hono";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/api";
-import { showToast } from "@/helpers/showToasts";
+import { showToast } from "@/helpers/show-toasts";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -25,7 +25,7 @@ export const useLoginAccount = () => {
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
       if(data.success === true) {
         Cookies.set('dr_das_research_lab_login_cookie', data.token!);
-        navigate('/admin/dashboard')
+        navigate('/admin/home')
       }
     },
     onError: () => {

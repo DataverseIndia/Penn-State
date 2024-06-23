@@ -1,31 +1,50 @@
-import { Button } from '@nextui-org/button';
-import { Image } from '@nextui-org/image';
-import React from 'react';
+import { useDeleteNews } from "@/app/(admin)/news/api/use-delete-news";
+import Blocks from 'editorjs-blocks-react-renderer';
+import { OutputData } from "@editorjs/editorjs";
+import { Button } from "@nextui-org/button";
+import { Image } from "@nextui-org/image";
 
-interface NewsCardProps {
-  imageSrc: string;
-  date: string;
-  title: string;
-  description: string;
-}
+type Props = {
+  id: number;
+  content: any;
+  imageUrl: string[] | null;
+};
 
-const NewsCard: React.FC<NewsCardProps> = ({
-  imageSrc,
-  date,
-  title,
-  description,
-}) => {
+const NewsCard = ({ id, content, imageUrl }: Props) => {
+  const deleteMutation = useDeleteNews(id.toString());
+  const deletePublication = () => {
+    deleteMutation.mutate()
+  }
+  const validImageUrls = imageUrl?.filter((img) => img.trim() !== '') || [];
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 ease-in-out cursor-pointer">
-      <Image src={imageSrc} alt="News" className="w-screen h-64 object-cover rounded-none" />
-      <div className="p-4">
-        <Button className="bg-neutral-900 text-neutral-100 py-1 px-5 rounded-md text-sm mb-2">
-          Read more
-        </Button>
-        <p className="text-gray-600 text-sm mb-2">{date}</p>
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <p className="text-gray-700">{description}</p>
+    <div className="mr-auto tracking-tight px-7 py-5 w-full">
+      <div className="flex justify-between gap-10">
+        <Blocks data={content} config={{
+          paragraph: {
+            className: "text-base my-auto",
+          },
+          link: {
+            className: "underline"
+          }
+        }}/>
+        <div className="flex gap-2">
+          <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]" onClick={() => deletePublication()}>Delete</Button>
+          <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]">Edit</Button>
+        </div>
       </div>
+      {validImageUrls.length > 0 ? (
+        validImageUrls.map((img, index) => (
+          <Image
+            key={index}
+            src={img}
+            alt="Publication Image"
+            className="mt-3 object-cover h-96 rounded"
+          />
+        ))
+      ) : (
+        <></>
+      )}
+      <hr className="w-full mx-auto mt-5 border-t-[1px] border-neutral-400" />
     </div>
   );
 };

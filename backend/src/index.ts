@@ -5,6 +5,7 @@ import { handle } from 'hono/aws-lambda';
 import admins from './admin';
 import publication from './publication';
 import member from './member';
+import news from "./news";
 import { prettyJSON } from 'hono/pretty-json';
 import { logger } from 'hono/logger';
 
@@ -25,7 +26,8 @@ app.onError((err, c) => {
 const routes = app
     .route('/admins', admins)
     .route('/publications', publication)
-    .route('/member', member);
+    .route('/member', member)
+    .route('/news', news);
 
 export const GET = handle(app);
 export const POST = handle(app);

@@ -1,6 +1,4 @@
 import { FC } from "react";
-import Navbar from "../home/Navbar";
-import Footer from "../home/Footer";
 import { Image } from "@nextui-org/image";
 import { Button } from "@nextui-org/button";
 import NormalCard from "./components/normal-card";
@@ -10,7 +8,6 @@ import DiscoveryCard from "./components/discovery-card";
 const News: FC = () => {
   return (
     <section>
-      <Navbar />
       <div>
         <div className="relative min-h-screen tracking-tighter">
           <Image
@@ -173,7 +170,6 @@ const News: FC = () => {
           />
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

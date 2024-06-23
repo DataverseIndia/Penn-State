@@ -44,3 +44,6 @@ body {
   @apply transition duration-300 ease-in-out
 }
 
+a {
+  @apply underline
+}

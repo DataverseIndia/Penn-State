@@ -13,19 +13,16 @@ const DesktopNavbar: FC = () => {
                 </div>
             </Link>
             <div className="text-stone-50 flex my-auto justify-between font-roboto-sans font-normal">
-                <Link to="/" className="hover:bg-white/10 animation px-5 py-2 rounded-full">
+                <Link to="/" className="hover:bg-white/10 animation px-5 py-2 rounded-full no-underline">
                     Home
                 </Link>
-                <Link to="/research" className="hover:bg-white/10 animation px-5 py-2 rounded-full">
+                <Link to="/research" className="hover:bg-white/10 animation px-5 py-2 rounded-full no-underline">
                     Research
                 </Link>
-                <Link to="/publications" className="hover:bg-white/10 animation px-5 py-2 rounded-full">
+                <Link to="/publications" className="hover:bg-white/10 animation px-5 py-2 rounded-full no-underline">
                     Publications
                 </Link>
-                <Link
-                    to="/news"
-                    className="hover:bg-white/10 animation px-5 py-2 rounded-full text-nowrap"
-                >
+                <Link to="/news" className="hover:bg-white/10 animation px-5 py-2 rounded-full text-nowrap no-underline">
                     News
                 </Link>
             </div>

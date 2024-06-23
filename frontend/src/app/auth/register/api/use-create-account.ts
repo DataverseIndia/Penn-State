@@ -1,7 +1,7 @@
 import { InferResponseType } from "hono";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/api";
-import { showToast } from "@/helpers/showToasts";
+import { showToast } from "@/helpers/show-toasts";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 

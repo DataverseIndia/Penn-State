@@ -11,7 +11,7 @@ const Sidebar: FC = (props: Props) => {
         <Link
           key={menu.name}
           to={menu.url}
-          className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-neutral-900 hover:text-neutral-100 w-full animation"
+          className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-neutral-900 hover:text-neutral-100 w-full animation no-underline"
         >
           {menu.icon}
           {menu.name}

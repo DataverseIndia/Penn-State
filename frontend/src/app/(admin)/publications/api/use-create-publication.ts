@@ -1,6 +1,6 @@
 import { InferResponseType } from "hono";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { showToast } from "@/helpers/showToasts";
+import { showToast } from "@/helpers/show-toasts";
 import { client } from "@/lib/api";
 
 type ResponseType = InferResponseType<(typeof client.publications)["add-publications"]["$post"]>;

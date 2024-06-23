@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import useDocumentTitle from '@/hooks/useDocumentTitle';
+import useDocumentTitle from '@/hooks/use-document-title';
 import { Button } from '@nextui-org/button';
 
 const NotFound: FC = () => {

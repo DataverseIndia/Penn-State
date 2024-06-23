@@ -1,7 +1,7 @@
-import useMediaQuery from '@/hooks/useMediaQuery';
+import useMediaQuery from '@/hooks/use-media-query';
 import React from 'react';
-import { MobileNavbar } from './(navbar)/MobileNavbar';
-import DesktopNavbar from './(navbar)/DesktopNavbar';
+import { MobileNavbar } from '../../components/navbar/mobile-navbar';
+import DesktopNavbar from '../../components/navbar/desktop-navbar';
 
 const Navbar: React.FC = () => {
     const isAboveSmallScreens = useMediaQuery('(min-width: 768px)');
