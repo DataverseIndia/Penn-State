@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const DesktopNavbar: FC = () => {
     return (
-        <section className="px-[10vw] grid grid-cols-3 py-3 fixed backdrop-blur-md z-30 w-full items-center tracking-tight bg-stone-950">
+        <section className="px-16 grid grid-cols-3 py-3 fixed backdrop-blur-md z-30 w-full items-center tracking-tight bg-stone-950">
             <Link to="/" className="mr-auto gap-3 flex justify-center items-center my-auto">
                 <img src="/icon.png" alt="logo" className="w-12 h-auto my-auto" />
                 <div className='text-stone-50 roboto-medium'>

@@ -7,6 +7,6 @@ export default {
   verbose: true,
   out: "./drizzle",
   dbCredentials: {
-    url: process.env.DATABASE_URL || "",
+    url: Bun.env.DATABASE_URL || "",
   },
 } satisfies Config;

@@ -7,7 +7,7 @@ export const authentication = async (c: AdminContext, next: Next) => {
     if (authHeader) {
         const token = authHeader.split(' ')[1];
         try {
-            const admin = jwt.verify(token, process.env.hiddenKey as string) as Admin;
+            const admin = jwt.verify(token, Bun.env.hiddenKey as string) as Admin;
             c.admin = admin;
             await next();
         } catch (err) {

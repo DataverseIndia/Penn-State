@@ -3,31 +3,29 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { showToast } from "@/helpers/showToasts";
 import { client } from "@/lib/api";
 
-type ResponseType = InferResponseType<(typeof client.publications)["add-publications"]["$post"]>;
+type ResponseType = InferResponseType<(typeof client.member)["add-members"]["$post"]>;
 type RequestType = {
-  imageUrl: File | null;
-  year: string;
-  publicationNumber: string;
-  topic: string;
-  title: string;
-  authors: string;
+   designation: string,
+   name: string,
+   email: string,
+   description: string,
+   imageUrl: string
 };
 
-export const useCreatePublication = () => {
+export const useCreateMember = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
-      console.log(json)
-      const response = await client.publications["add-publications"].$post({json});
+      const response = await client.member["add-members"].$post({json});
       return await response.json();
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["publications"] });
+      queryClient.invalidateQueries({ queryKey: ["members"] });
       if (data.success === true) {
-        showToast("Publication created", true);
+        showToast(data.message, true);
       } else {
-        showToast("Failed to create publication", false);
+        showToast(data.message, false);
       }
     },
     onError: () => {

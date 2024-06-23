@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <section className="bg-black text-neutral-300 py-10 mt-auto">
+    <section className="bg-black text-neutral-300 py-10 mt-auto z-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">

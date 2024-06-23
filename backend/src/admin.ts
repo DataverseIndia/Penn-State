@@ -5,7 +5,6 @@ import Handlebars from 'handlebars';
 import { db } from './database/drizzle';
 import { admins } from './database/schema';
 import { sendOTP } from './helpers/send-otp';
-import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
 import { sign } from 'hono/jwt';
 import { sendMail } from './helpers/sent-mail';
@@ -18,11 +17,9 @@ const app = new Hono()
             const isUserVerified = admin.isVerified;
             if (!isUserVerified) {
                 const randomOTP = sendOTP();
-                const hashedPassword: string = await new Promise((resolve, reject) => {
-                    bcrypt.hash(password, 7, (err, hash) => {
-                        if (err) reject(err);
-                        else resolve(hash);
-                    });
+                const hashedPassword = await Bun.password.hash(password, {
+                    algorithm: "bcrypt",
+                    cost: 10,
                 });
                 await db
                     .update(admins)
@@ -44,7 +41,7 @@ const app = new Hono()
                 const content = emailTemplate({ randomOTP });
 
                 await sendMail(email, 'Authenticate yourself for Dr. Das Research Lab', content);
-                const token = await sign(email, process.env.hiddenKey!);
+                const token = await sign(email, Bun.env.hiddenKey!);
                 console.log('hey');
                 return c.json({ success: true, message: 'User updated', token: token }, 200);
             } else {
@@ -52,11 +49,9 @@ const app = new Hono()
             }
         } else {
             const randomOTP = sendOTP();
-            const hashedPassword: string = await new Promise((resolve, reject) => {
-                bcrypt.hash(password, 7, (err, hash) => {
-                    if (err) reject(err);
-                    else resolve(hash);
-                });
+            const hashedPassword = await Bun.password.hash(password, {
+                algorithm: "bcrypt",
+                cost: 10,
             });
             await db.insert(admins).values({
                 fullName: name,
@@ -78,12 +73,9 @@ const app = new Hono()
             await sendMail(email, 'Authenticate yourself for Dr. Das Research Lab', content);
 
             await db.update(admins).set({ createdAt: new Date() }).where(eq(admins.email, email));
-            const token = await sign(email, process.env.hiddenKey!);
+            const token = await sign(email, Bun.env.hiddenKey);
             console.log('hey');
-            return c.json(
-                { success: true, message: 'User created successfully', token: token },
-                200,
-            );
+            return c.json({ success: true, message: 'User created successfully', token: token }, 200);
         }
     })
     .post('/verify-registration', async c => {
@@ -104,26 +96,15 @@ const app = new Hono()
     })
     .post('/login', async c => {
         const { email, password } = await c.req.json();
-        const admin = await db.select().from(admins).where(eq(admins.email, email));
+        const [admin] = await db.select().from(admins).where(eq(admins.email, email));
 
-        if (!admin || admin.length === 0 || admin[0].isVerified === false) {
-            return c.json(
-                { success: false, message: "User not verified or doesn't exist", token: null },
-                403,
-            );
+        if (admin.isVerified===false) {
+            return c.json({ success: false, message: "User not verified or doesn't exist", token: null }, 403);
         } else {
-            const passwordCheck: boolean = await new Promise((resolve, reject) => {
-                bcrypt.compare(password, admin[0].password, async (error, result) => {
-                    if (error) reject(error);
-                    else resolve(result);
-                });
-            });
+            const passwordCheck = await Bun.password.verify(password, admin.password)
             if (passwordCheck === true) {
-                const token = await sign(email, process.env.hiddenKey!);
-                return c.json(
-                    { success: true, message: 'Logged in successfully', token: token },
-                    200,
-                );
+                const token = await sign(email, Bun.env.hiddenKey!);
+                return c.json({ success: true, message: 'Logged in successfully', token: token }, 200);
             } else {
                 return c.json({ success: false, message: 'Incorrect Password', token: null }, 403);
             }

@@ -7,28 +7,27 @@
     "update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name hello",
     "deploy": "run-s build zip update",
     "db:generate": "drizzle-kit generate",
-    "db:push": "drizzle-kit push --config ./drizzle.config.ts",
+    "db:push": "drizzle-kit push",
     "db:introspect": "drizzle-kit introspect",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@types/jsonwebtoken": "^9.0.6",
-    "@types/node": "^20.14.2",
+    "@hono/zod-validator": "^0.2.2",
     "@types/nodemailer": "^6.4.15",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.1",
     "drizzle-zod": "^0.5.1",
     "handlebars": "^4.7.8",
     "hono": "^4.4.4",
-    "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.13",
     "postgres": "^3.4.4",
-    "bcrypt": "^5.1.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bun": "^1.1.5",
     "drizzle-kit": "^0.22.7",
-    "esbuild": "^0.21.4",
-    "@types/bcrypt": "^5.0.2"
+    "esbuild": "^0.21.4"
   }
 }

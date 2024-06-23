@@ -1,16 +1,18 @@
 import { client } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetPublications = () => {
+export const useGetMembers = () => {
     const query = useQuery({
-        queryKey: ['publications'],
+        queryKey: ['members'],
         queryFn: async () => {
-            const response = await client.publications["get-publications"].$get();
+            const response = await client.member["get-members"].$get();
             if (!response.ok) {
                 throw new Error('Failed to fetch acounts');
             }
-            const { publications } = await response.json();
-            return publications;
+            const { success, members } = await response.json();
+            if (success === true) {
+                return members;
+            }
         },
     });
     return query;

@@ -1,9 +1,9 @@
-import { FC, useState, useEffect } from 'react';
-import Sidebar from '../../sidebar';
+import { FC, useState } from 'react';
+import Sidebar from '../../_components/sidebar';
 import { useCreatePublication } from '../api/use-create-publication';
 import { useGetPublications } from '../api/use-get-publications';
 import PublicationCard from '@/components/global/publication-card';
-import SheetComponent from '@/components/global/sheet-component';
+import PublicationSheet from '@/components/global/publication-sheet';
 
 type Props = {};
 
@@ -15,11 +15,11 @@ const Publications: FC<Props> = () => {
   const [topic, setTopic] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [authors, setAuthors] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('')
+  const [imageUrl, setImageUrl] = useState<File | null>(null)
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (year && publicationNumber && topic && title && authors) {
+    if (year && topic && title && authors) {
       const requestData = { year, publicationNumber, topic, title, authors, imageUrl };
       createPublicationMutation.mutate(requestData);
     }
@@ -27,14 +27,15 @@ const Publications: FC<Props> = () => {
 
   const publicationsQuery = useGetPublications();
   const publications = publicationsQuery.data || [];
+  const isLoading = createPublicationMutation.isPending;
 
   return (
-    <section className="grid min-h-[90vh] w-full overflow-hidden lg:grid-cols-[280px_1fr] pt-20">
+    <section className="flex min-h-[90vh] w-full overflow-hidden pt-20">
       <Sidebar />
-      <div>
+      <div className="ml-[200px] w-full">
         <header className="flex lg:h-[60px] items-center gap-4 border-b bg-muted/40 px-6 font-relative-medium text-3xl justify-between">
           <h1 className="tracking-tight font-relative-medium">Publications</h1>
-          <SheetComponent
+          <PublicationSheet
             year={year}
             setYear={setYear}
             publicationNumber={publicationNumber}
@@ -47,6 +48,7 @@ const Publications: FC<Props> = () => {
             setAuthors={setAuthors}
             imageUrl={imageUrl}
             setImageUrl={setImageUrl}
+            isLoading={isLoading}
             handleSubmit={handleSubmit}
           />
         </header>
