@@ -14,16 +14,16 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col md:flex-row md:space-x-16">
             <div className="mb-8 md:mb-0">
-              <h3 className="font-bold">Utility Pages</h3>
+              <h3 className="font-relative-medium text-neutral-700 mb-2">Utility Pages</h3>
               <ul className='text-sm grid'>
-                <Link to="/">About Us</Link>
-                <Link to="/">License</Link>
-                <Link to="/">Contact</Link>
-                <Link to="/">404</Link>
+                <Link to="/" className='no-underline'>About Us</Link>
+                <Link to="/" className='no-underline'>License</Link>
+                <Link to="/" className='no-underline'>Contact</Link>
+                <Link to="/" className='no-underline'>404</Link>
               </ul>
             </div>
             <div>
-              <h3 className="font-relative-bold mb-2">Subscribe</h3>
+              <h3 className="font-relative-medium text-neutral-700 mb-2">Subscribe</h3>
               <div className="flex">
                 <Input
                   type="email"
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                 />
                 <Button
                   type="submit"
-                  className="bg-black text-white p-2 rounded-md ml-3 border border-neutral-700"
+                  className="bg-black text-white p-2 rounded-md ml-3 border-2 border-neutral-700"
                 >
                   Subscribe
                 </Button>

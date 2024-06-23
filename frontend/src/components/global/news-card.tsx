@@ -3,6 +3,7 @@ import Blocks from 'editorjs-blocks-react-renderer';
 import { OutputData } from "@editorjs/editorjs";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
+import { isAdminRoute } from "@/utils";
 
 type Props = {
   id: number;
@@ -17,7 +18,7 @@ const NewsCard = ({ id, content, imageUrl }: Props) => {
   }
   const validImageUrls = imageUrl?.filter((img) => img.trim() !== '') || [];
   return (
-    <div className="mr-auto tracking-tight px-7 py-5 w-full">
+    <div className="mr-auto tracking-tight py-5 w-full">
       <div className="flex justify-between gap-10">
         <Blocks data={content} config={{
           paragraph: {
@@ -27,10 +28,12 @@ const NewsCard = ({ id, content, imageUrl }: Props) => {
             className: "underline"
           }
         }}/>
-        <div className="flex gap-2">
-          <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]" onClick={() => deletePublication()}>Delete</Button>
-          <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]">Edit</Button>
-        </div>
+        {isAdminRoute && (
+          <div className="flex gap-2">
+            <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]" onClick={() => deletePublication()}>Delete</Button>
+            <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]">Edit</Button>
+          </div>
+        )}
       </div>
       {validImageUrls.length > 0 ? (
         validImageUrls.map((img, index) => (

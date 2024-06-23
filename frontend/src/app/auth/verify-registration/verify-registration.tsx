@@ -3,8 +3,8 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Navbar from "@/app/home/Navbar";
-import Footer from "@/app/home/Footer";
+import Navbar from "@/app/(landing)/home/Navbar";
+import Footer from "@/app/(landing)/home/Footer";
 import { useVerifyRegistration } from "./api/use-verify-registration";
 import { Button } from "@nextui-org/button";
 

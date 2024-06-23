@@ -1,4 +1,5 @@
 import { useDeleteMember } from '@/app/(admin)/members/api/use-delete-members';
+import { isAdminRoute } from '@/utils';
 import { Button } from '@nextui-org/button';
 import { Image } from '@nextui-org/image';
 import { Link } from 'react-router-dom';
@@ -31,14 +32,16 @@ const MemberCard = ({ id, designation, imageUrl, name, email, description }: Pro
                         </div>
                         <Link to={`mailto:${email}`}>{email}</Link>
                     </div>
-                    <div className="flex gap-2">
-                        <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]" onClick={() => deleteMember()}>
-                           Delete
-                        </Button>
-                        <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]">
-                           Edit
-                        </Button>
-                    </div>
+                    {isAdminRoute && (
+                        <div className="flex gap-2">
+                            <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]" onClick={() => deleteMember()}>
+                                Delete
+                            </Button>
+                            <Button size="sm" className="text-neutral-800 hover:text-neutral-950 bg-white hover:bg-neutral-100 animation rounded-md shadow-[inset_-12px_-8px_40px_#46464620]">
+                                Edit
+                            </Button>
+                        </div>
+                    )}
                 </div>
                 <p className="text-neutral-900 text-justify tracking-tight">{description}</p>
             </div>

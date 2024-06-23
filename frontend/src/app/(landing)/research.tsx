@@ -1,12 +1,9 @@
 import { FC } from "react";
-import Navbar from "../home/Navbar";
-import Footer from "../home/Footer";
 import { Image } from "@nextui-org/image";
 
 const OurResearch: FC = () => {
   return (
     <section className="min-h-screen">
-      <Navbar />
       <div className="w-[70%] mx-auto pt-32">
         <div className="bg-neutral-950 px-28 py-12 text-neutral-100 font-roboto-serif font-medium rounded-xl text-5xl text-center">
           Our ResearchWork
@@ -114,7 +111,6 @@ const OurResearch: FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

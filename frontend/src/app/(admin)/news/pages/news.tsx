@@ -50,7 +50,6 @@ const News: FC = (props: Props) => {
             />
           ))}
         </div>
-
       </div>
     </div>
   );

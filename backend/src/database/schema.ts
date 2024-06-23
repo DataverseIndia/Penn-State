@@ -38,7 +38,7 @@ export const news = pgTable('news', {
 
 export const gallery = pgTable('gallery', {
   id: serial('id').primaryKey(),
-  imageUrl: text('imageUrl').notNull(),
+  imageUrl: text('imageUrl').array(),
   caption: text('caption')
 })
 

@@ -25,6 +25,9 @@ const DesktopNavbar: FC = () => {
                 <Link to="/news" className="hover:bg-white/10 animation px-5 py-2 rounded-full text-nowrap no-underline">
                     News
                 </Link>
+                <Link to="/gallery" className="hover:bg-white/10 animation px-5 py-2 rounded-full text-nowrap no-underline">
+                    Gallery
+                </Link>
             </div>
             <Button className='max-w-max ml-auto rounded-md bg-neutral-100'>
                 Contact Us

@@ -1,14 +1,6 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Input } from '../ui/input';
 import { Button } from '@nextui-org/button';
 import EditorInstance from '@/app/(editor)/editor-instance';

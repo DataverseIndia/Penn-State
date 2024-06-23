@@ -3,7 +3,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@nextui-org/button";
 import { LocateIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { FC } from "react";
-import Navbar from "../home/Navbar";
+import Navbar from "../(landing)/home/Navbar";
 
 const ContactUs: FC = () => {
   return (

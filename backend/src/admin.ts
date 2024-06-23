@@ -41,7 +41,7 @@ const app = new Hono()
                 const content = emailTemplate({ randomOTP });
 
                 await sendMail(email, 'Authenticate yourself for Dr. Das Research Lab', content);
-                const token = await sign(email, Bun.env.hiddenKey!);
+                const token = await sign(email, process.env.hiddenKey!);
                 console.log('hey');
                 return c.json({ success: true, message: 'User updated', token: token }, 200);
             } else {
@@ -73,7 +73,7 @@ const app = new Hono()
             await sendMail(email, 'Authenticate yourself for Dr. Das Research Lab', content);
 
             await db.update(admins).set({ createdAt: new Date() }).where(eq(admins.email, email));
-            const token = await sign(email, Bun.env.hiddenKey);
+            const token = await sign(email, process.env.hiddenKey);
             console.log('hey');
             return c.json({ success: true, message: 'User created successfully', token: token }, 200);
         }
@@ -103,7 +103,7 @@ const app = new Hono()
         } else {
             const passwordCheck = await Bun.password.verify(password, admin.password)
             if (passwordCheck === true) {
-                const token = await sign(email, Bun.env.hiddenKey!);
+                const token = await sign(email, process.env.hiddenKey!);
                 return c.json({ success: true, message: 'Logged in successfully', token: token }, 200);
             } else {
                 return c.json({ success: false, message: 'Incorrect Password', token: null }, 403);

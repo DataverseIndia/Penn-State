@@ -12,7 +12,7 @@ export const sendMail = async (
       secure: true,
       auth: {
         user: "shreddlab@gmail.com",
-        pass: Bun.env.password,
+        pass: process.env.password,
       },
     });
 
